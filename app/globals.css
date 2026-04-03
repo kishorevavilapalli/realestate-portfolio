@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Variables (injected by layout from client.config) ── */
+:root {
+  --color-navy:      #0F1C2E;
+  --color-gold:      #C9A84C;
+  --color-gold-light:#E8D5A3;
+  --color-cream:     #F9F6F0;
+  --color-muted:     #6B7280;
+  --font-serif:      'Playfair Display';
+  --font-sans:       'Inter';
+}
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans bg-white text-gray-900;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+
+  /* Focus-visible ring for accessibility */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  /* Gold underline accent */
+  .gold-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .gold-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 48px;
+    height: 3px;
+    background: var(--color-gold);
+    border-radius: 2px;
+  }
+
+  /* Section padding consistency */
+  .section-pad { @apply py-20 md:py-28; }
+}
